@@ -232,9 +232,9 @@ local v15 = v14:CreateWindow({
     MinimizeKey = Enum.KeyCode.RightShift
 });
 
--- Thêm 8 tab rỗng
+-- Thêm 8 tab, với Tab 1 là "Auto Farm"
 local v16 = {
-    Tab1 = v15:AddTab({ Title = "Tab 1" }),
+    Tab1 = v15:AddTab({ Title = "Auto Farm" }),
     Tab2 = v15:AddTab({ Title = "Tab 2" }),
     Tab3 = v15:AddTab({ Title = "Tab 3" }),
     Tab4 = v15:AddTab({ Title = "Tab 4" }),
@@ -243,6 +243,30 @@ local v16 = {
     Tab7 = v15:AddTab({ Title = "Tab 7" }),
     Tab8 = v15:AddTab({ Title = "Tab 8" })
 };
+
+-- Thêm nút button vào Tab 1 (Auto Farm)
+v16.Tab1:AddButton({
+    Title = "Run Auto Farm",
+    Description = "Chạy script Auto Farm",
+    Callback = function()
+        local success, result = pcall(function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Danhdz2k12/Okkkkkk/refs/heads/main/Danhhai.txt"))()
+        end)
+        if not success then
+            v14:Notify({
+                Title = "Lỗi",
+                Content = "Không thể chạy script: " .. tostring(result),
+                Duration = 5
+            })
+        else
+            v14:Notify({
+                Title = "Thành công",
+                Content = "Đã chạy script Auto Farm!",
+                Duration = 3
+            })
+        end
+    end
+})
 
 -- Tạo nút image nhỏ ngoài menu
 local v18 = CreateObject("ImageButton", {
